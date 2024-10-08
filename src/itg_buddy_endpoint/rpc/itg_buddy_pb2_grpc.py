@@ -3,7 +3,7 @@
 import grpc
 import warnings
 
-import itg_buddy_service_pb2 as itg__buddy__service__pb2
+import itg_buddy_pb2 as itg__buddy__pb2
 
 GRPC_GENERATED_VERSION = '1.66.2'
 GRPC_VERSION = grpc.__version__
@@ -18,14 +18,14 @@ except ImportError:
 if _version_not_supported:
     raise RuntimeError(
         f'The grpc package installed is at version {GRPC_VERSION},'
-        + f' but the generated code in itg_buddy_service_pb2_grpc.py depends on'
+        + f' but the generated code in itg_buddy_pb2_grpc.py depends on'
         + f' grpcio>={GRPC_GENERATED_VERSION}.'
         + f' Please upgrade your grpc module to grpcio>={GRPC_GENERATED_VERSION}'
         + f' or downgrade your generated code using grpcio-tools<={GRPC_VERSION}.'
     )
 
 
-class itg_cliStub(object):
+class SimfileManagementStub(object):
     """Missing associated documentation comment in .proto file."""
 
     def __init__(self, channel):
@@ -35,13 +35,13 @@ class itg_cliStub(object):
             channel: A grpc.Channel.
         """
         self.AddSong = channel.unary_unary(
-                '/itg_buddy_service.itg_cli/AddSong',
-                request_serializer=itg__buddy__service__pb2.AddSongRequest.SerializeToString,
-                response_deserializer=itg__buddy__service__pb2.AddSongResponse.FromString,
+                '/itg_buddy.SimfileManagement/AddSong',
+                request_serializer=itg__buddy__pb2.AddSongRequest.SerializeToString,
+                response_deserializer=itg__buddy__pb2.AddSongResponse.FromString,
                 _registered_method=True)
 
 
-class itg_cliServicer(object):
+class SimfileManagementServicer(object):
     """Missing associated documentation comment in .proto file."""
 
     def AddSong(self, request, context):
@@ -51,22 +51,22 @@ class itg_cliServicer(object):
         raise NotImplementedError('Method not implemented!')
 
 
-def add_itg_cliServicer_to_server(servicer, server):
+def add_SimfileManagementServicer_to_server(servicer, server):
     rpc_method_handlers = {
             'AddSong': grpc.unary_unary_rpc_method_handler(
                     servicer.AddSong,
-                    request_deserializer=itg__buddy__service__pb2.AddSongRequest.FromString,
-                    response_serializer=itg__buddy__service__pb2.AddSongResponse.SerializeToString,
+                    request_deserializer=itg__buddy__pb2.AddSongRequest.FromString,
+                    response_serializer=itg__buddy__pb2.AddSongResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
-            'itg_buddy_service.itg_cli', rpc_method_handlers)
+            'itg_buddy.SimfileManagement', rpc_method_handlers)
     server.add_generic_rpc_handlers((generic_handler,))
-    server.add_registered_method_handlers('itg_buddy_service.itg_cli', rpc_method_handlers)
+    server.add_registered_method_handlers('itg_buddy.SimfileManagement', rpc_method_handlers)
 
 
  # This class is part of an EXPERIMENTAL API.
-class itg_cli(object):
+class SimfileManagement(object):
     """Missing associated documentation comment in .proto file."""
 
     @staticmethod
@@ -83,9 +83,9 @@ class itg_cli(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/itg_buddy_service.itg_cli/AddSong',
-            itg__buddy__service__pb2.AddSongRequest.SerializeToString,
-            itg__buddy__service__pb2.AddSongResponse.FromString,
+            '/itg_buddy.SimfileManagement/AddSong',
+            itg__buddy__pb2.AddSongRequest.SerializeToString,
+            itg__buddy__pb2.AddSongResponse.FromString,
             options,
             channel_credentials,
             insecure,
