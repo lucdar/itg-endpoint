@@ -1,7 +1,7 @@
 syntax = "proto3";
-package itg_buddy_service;
+package itg_buddy;
 
-service itg_cli {
+service SimfileManagement {
   rpc AddSong (AddSongRequest) returns (AddSongResponse);
 }
 

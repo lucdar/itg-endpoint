@@ -1,5 +1,5 @@
 [project]
-name = "itg-buddy-client"
+name = "itg-buddy-endpoint"
 version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
